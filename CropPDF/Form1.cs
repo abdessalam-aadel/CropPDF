@@ -55,9 +55,7 @@ namespace CropPDF
 
             // Check the Empty Folder
             if (fileCount == 0)
-            {
                 return;
-            }
             
             // Clear the Alert message and success message
             txtDone.Text = "";
@@ -90,10 +88,23 @@ namespace CropPDF
                         // Access to a new PDF page 3
                         Page page3 = doc.GetPage(3);
 
+                        // Start Convertion ...
+                        // Convert String to Integer 
+                        // ( add System to Class Convert to avoid a conflit between Convert of PDFTron )
+                        int X1 = System.Convert.ToInt32(txtBoxX1.Text);
+                        int X2 = System.Convert.ToInt32(txtBoxX2.Text);
+                        int Y1 = System.Convert.ToInt32(txtBoxY1.Text);
+                        int Y2 = System.Convert.ToInt32(txtBoxY2.Text);
+
+                        int X11 = System.Convert.ToInt32(txtBoxX11.Text);
+                        int X22 = System.Convert.ToInt32(txtBoxX22.Text);
+                        int Y11 = System.Convert.ToInt32(txtBoxY11.Text);
+                        int Y22 = System.Convert.ToInt32(txtBoxY22.Text);
+
                         // Crop the first, second and third page
-                        page1.SetCropBox(new Rect(565, 0, 1587, 1096));
-                        page2.SetCropBox(new Rect(565, 0, 1587, 1096));
-                        page3.SetCropBox(new Rect(0, 0, 575, 1096));
+                        page1.SetCropBox(new Rect(X1, Y1, X2, Y2));
+                        page2.SetCropBox(new Rect(X1, Y1, X2, Y2));
+                        page3.SetCropBox(new Rect(X11, Y11, X22, Y22));
 
                         // Save as a linearized file which is most popular 
                         // and effective format for quick PDF Viewing.
@@ -106,6 +117,18 @@ namespace CropPDF
                 MessageBox.Show(ex.Message);
             }
 
+            catch (FormatException)
+            {
+                // Input string is not a sequence of digits
+                MessageBox.Show("Please Enter a Number!");
+            }
+
+            catch (Exception ex)
+            {
+                // Message Exception
+                MessageBox.Show(ex.Message);
+            }
+
             PDFNet.Terminate();
             Cursor = Cursors.Default;
             txtDone.Text = "Done!";
@@ -113,7 +136,8 @@ namespace CropPDF
 
         private void txtGit_Click(object sender, EventArgs e)
         {
-            Process.Start("https://github.com/abdessalam-aadel");
+            // Go to github repositorie
+            Process.Start("https://github.com/abdessalam-aadel/CropPDF");
         }
 
         private void FrmMain_DragDrop(object sender, DragEventArgs e)
