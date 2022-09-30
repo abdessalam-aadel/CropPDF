@@ -152,7 +152,7 @@
             this.txtBoxX1.Name = "txtBoxX1";
             this.txtBoxX1.Size = new System.Drawing.Size(38, 20);
             this.txtBoxX1.TabIndex = 102;
-            this.txtBoxX1.Text = "565";
+            this.txtBoxX1.Text = "575";
             // 
             // txtBoxX2
             // 
@@ -286,7 +286,7 @@
             this.txtBoxX22.Name = "txtBoxX22";
             this.txtBoxX22.Size = new System.Drawing.Size(38, 20);
             this.txtBoxX22.TabIndex = 112;
-            this.txtBoxX22.Text = "575";
+            this.txtBoxX22.Text = "585";
             // 
             // txtBoxX11
             // 

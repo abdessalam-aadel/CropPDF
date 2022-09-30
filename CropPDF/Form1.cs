@@ -17,7 +17,6 @@ namespace CropPDF
         // Required for AnyCPU implementation.
         private static PDFNetLoader loader = PDFNetLoader.Instance();
 
-
         public FrmMain()
         {
             InitializeComponent();
