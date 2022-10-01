@@ -2,6 +2,7 @@
 using System.IO;
 using System.Diagnostics;
 using System.Windows.Forms;
+using System.Drawing;
 using pdftron;
 using pdftron.Common;
 using pdftron.SDF;
@@ -13,6 +14,7 @@ namespace CropPDF
     {
         string[] PDFfiles;
         int fileCount = 0;
+        public bool ischecked = false; 
 
         // Required for AnyCPU implementation.
         private static PDFNetLoader loader = PDFNetLoader.Instance();
@@ -73,41 +75,70 @@ namespace CropPDF
                 {
                     using (PDFDoc doc = new PDFDoc(filePath))
                     {
-                        doc.InitSecurityHandler();
+                        if (ischecked)
+                        {
+                            doc.InitSecurityHandler();
+                            
+                            // Start Convertion ...
+                            // Convert String to Integer 
+                            // ( add System to Class Convert to avoid a conflit between Convert of PDFTron )
+                            int X1 = System.Convert.ToInt32(txtBoxX1.Text);
+                            int X2 = System.Convert.ToInt32(txtBoxX2.Text);
+                            int Y1 = System.Convert.ToInt32(txtBoxY1.Text);
+                            int Y2 = System.Convert.ToInt32(txtBoxY2.Text);
 
-                        // Access a PDF page 1
-                        Page page1 = doc.GetPage(1);
+                            // get the length of pages
+                            int nbrPages = doc.GetPageCount();
+                            // Start for loop to crop all pages with the same parametre
+                            for (int i = 1; i < nbrPages + 1; i++)
+                            {
+                                // Access a PDF page
+                                Page page = doc.GetPage(i);
+                                // Crop the page
+                                page.SetCropBox(new Rect(X1, Y1, X2, Y2));
+                            }
+                            // Save as a linearized file which is most popular 
+                            // and effective format for quick PDF Viewing.
+                            doc.Save(filePath, SDFDoc.SaveOptions.e_linearized);
+                        }
+                        else
+                        {
+                            doc.InitSecurityHandler();
 
-                        // Access a PDF page 2
-                        Page page2 = doc.GetPage(2);
-                        
-                        // Creat a copy from page 1 
-                        doc.PagePushBack(page1);
+                            // Access a PDF page 1
+                            Page page1 = doc.GetPage(1);
 
-                        // Access to a new PDF page 3
-                        Page page3 = doc.GetPage(3);
+                            // Access a PDF page 2
+                            Page page2 = doc.GetPage(2);
 
-                        // Start Convertion ...
-                        // Convert String to Integer 
-                        // ( add System to Class Convert to avoid a conflit between Convert of PDFTron )
-                        int X1 = System.Convert.ToInt32(txtBoxX1.Text);
-                        int X2 = System.Convert.ToInt32(txtBoxX2.Text);
-                        int Y1 = System.Convert.ToInt32(txtBoxY1.Text);
-                        int Y2 = System.Convert.ToInt32(txtBoxY2.Text);
+                            // Creat a copy from page 1 
+                            doc.PagePushBack(page1);
 
-                        int X11 = System.Convert.ToInt32(txtBoxX11.Text);
-                        int X22 = System.Convert.ToInt32(txtBoxX22.Text);
-                        int Y11 = System.Convert.ToInt32(txtBoxY11.Text);
-                        int Y22 = System.Convert.ToInt32(txtBoxY22.Text);
+                            // Access to a new PDF page 3
+                            Page page3 = doc.GetPage(3);
 
-                        // Crop the first, second and third page
-                        page1.SetCropBox(new Rect(X1, Y1, X2, Y2));
-                        page2.SetCropBox(new Rect(X1, Y1, X2, Y2));
-                        page3.SetCropBox(new Rect(X11, Y11, X22, Y22));
+                            // Start Convertion ...
+                            // Convert String to Integer 
+                            // ( add System to Class Convert to avoid a conflit between Convert of PDFTron )
+                            int X1 = System.Convert.ToInt32(txtBoxX1.Text);
+                            int X2 = System.Convert.ToInt32(txtBoxX2.Text);
+                            int Y1 = System.Convert.ToInt32(txtBoxY1.Text);
+                            int Y2 = System.Convert.ToInt32(txtBoxY2.Text);
 
-                        // Save as a linearized file which is most popular 
-                        // and effective format for quick PDF Viewing.
-                        doc.Save(filePath, SDFDoc.SaveOptions.e_linearized);
+                            int X11 = System.Convert.ToInt32(txtBoxX11.Text);
+                            int X22 = System.Convert.ToInt32(txtBoxX22.Text);
+                            int Y11 = System.Convert.ToInt32(txtBoxY11.Text);
+                            int Y22 = System.Convert.ToInt32(txtBoxY22.Text);
+
+                            // Crop the first, second and third page
+                            page1.SetCropBox(new Rect(X1, Y1, X2, Y2));
+                            page2.SetCropBox(new Rect(X1, Y1, X2, Y2));
+                            page3.SetCropBox(new Rect(X11, Y11, X22, Y22));
+
+                            // Save as a linearized file which is most popular 
+                            // and effective format for quick PDF Viewing.
+                            doc.Save(filePath, SDFDoc.SaveOptions.e_linearized);
+                        }
                     }
                 }
             }
@@ -154,6 +185,42 @@ namespace CropPDF
         private void FrmMain_DragEnter(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.Copy;
+        }
+
+        private void checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox.Checked)
+            {
+                ischecked = true;
+                labelChangeText.Text = "Parametre of croping :";
+                labelToStrikout.Font = new System.Drawing.Font(labelToStrikout.Font, FontStyle.Strikeout); ;
+
+                // Disable all text box of croping parametre
+                txtBoxX11.Enabled = false;
+                txtBoxX22.Enabled = false;
+                txtBoxY11.Enabled = false;
+                txtBoxY22.Enabled = false;
+                
+            }
+            else
+            {
+                ischecked = false;
+                labelChangeText.Text = "Parametre of croping the first and second pages :";
+                labelToStrikout.Font = new System.Drawing.Font(labelToStrikout.Font, FontStyle.Regular); ;
+
+                // Enable all text box of croping parametre
+                txtBoxX11.Enabled = true;
+                txtBoxX22.Enabled = true;
+                txtBoxY11.Enabled = true;
+                txtBoxY22.Enabled = true;
+
+                // Return default values
+                txtBoxX1.Text = "590";
+                txtBoxX2.Text = "1587";
+                txtBoxY1.Text = "0";
+                txtBoxY2.Text = "1096";
+            }
+            
         }
     }
 }
