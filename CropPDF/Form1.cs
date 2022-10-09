@@ -166,12 +166,13 @@ namespace CropPDF
 
         private void txtGit_Click(object sender, EventArgs e)
         {
-            // Go to github repositorie
+            // Go to github repository
             Process.Start("https://github.com/abdessalam-aadel/CropPDF");
         }
 
         private void FrmMain_DragDrop(object sender, DragEventArgs e)
         {
+            picArrowDown.Visible = false;
             string path = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
             txtBoxLoad.Text = path;
             fileCount = SearchDirectoryTree(path, out PDFfiles);
@@ -185,6 +186,11 @@ namespace CropPDF
         private void FrmMain_DragEnter(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.Copy;
+            picArrowDown.Visible = true;
+            txtBoxLoad.Text = "Chose your folder ...";
+            txtDone.Text = "";
+            txtTotales.Text = "...";
+            txtAlert.Text = "";
         }
 
         private void checkBox_CheckedChanged(object sender, EventArgs e)
@@ -200,7 +206,9 @@ namespace CropPDF
                 txtBoxX22.Enabled = false;
                 txtBoxY11.Enabled = false;
                 txtBoxY22.Enabled = false;
-                
+
+                txtBoxX1.Text = "800";
+
             }
             else
             {
@@ -221,6 +229,11 @@ namespace CropPDF
                 txtBoxY2.Text = "1096";
             }
             
+        }
+
+        private void FrmMain_DragLeave(object sender, EventArgs e)
+        {
+            picArrowDown.Visible = false;
         }
     }
 }

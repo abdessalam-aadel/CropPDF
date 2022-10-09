@@ -56,6 +56,8 @@
             this.labelChangeText = new System.Windows.Forms.Label();
             this.labelToStrikout = new System.Windows.Forms.Label();
             this.checkBox = new System.Windows.Forms.CheckBox();
+            this.picArrowDown = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.picArrowDown)).BeginInit();
             this.SuspendLayout();
             // 
             // txtBoxLoad
@@ -74,7 +76,7 @@
             this.txtGit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.txtGit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtGit.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.txtGit.Location = new System.Drawing.Point(164, 196);
+            this.txtGit.Location = new System.Drawing.Point(164, 201);
             this.txtGit.Name = "txtGit";
             this.txtGit.Size = new System.Drawing.Size(38, 13);
             this.txtGit.TabIndex = 1;
@@ -111,7 +113,7 @@
             // 
             this.labelTotales.AutoSize = true;
             this.labelTotales.ForeColor = System.Drawing.Color.DarkGreen;
-            this.labelTotales.Location = new System.Drawing.Point(136, 183);
+            this.labelTotales.Location = new System.Drawing.Point(136, 187);
             this.labelTotales.Name = "labelTotales";
             this.labelTotales.Size = new System.Drawing.Size(72, 13);
             this.labelTotales.TabIndex = 4;
@@ -121,7 +123,7 @@
             // 
             this.txtTotales.AutoSize = true;
             this.txtTotales.ForeColor = System.Drawing.Color.DarkGreen;
-            this.txtTotales.Location = new System.Drawing.Point(204, 183);
+            this.txtTotales.Location = new System.Drawing.Point(204, 187);
             this.txtTotales.Name = "txtTotales";
             this.txtTotales.Size = new System.Drawing.Size(16, 13);
             this.txtTotales.TabIndex = 5;
@@ -131,7 +133,7 @@
             // 
             this.txtDone.AutoSize = true;
             this.txtDone.ForeColor = System.Drawing.Color.DarkRed;
-            this.txtDone.Location = new System.Drawing.Point(327, 183);
+            this.txtDone.Location = new System.Drawing.Point(327, 187);
             this.txtDone.Name = "txtDone";
             this.txtDone.Size = new System.Drawing.Size(0, 13);
             this.txtDone.TabIndex = 6;
@@ -225,7 +227,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(296, 162);
+            this.label1.Location = new System.Drawing.Point(296, 168);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(26, 13);
             this.label1.TabIndex = 118;
@@ -235,7 +237,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(228, 162);
+            this.label2.Location = new System.Drawing.Point(228, 168);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(26, 13);
             this.label2.TabIndex = 117;
@@ -245,7 +247,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.MediumBlue;
-            this.label3.Location = new System.Drawing.Point(77, 162);
+            this.label3.Location = new System.Drawing.Point(77, 168);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(26, 13);
             this.label3.TabIndex = 116;
@@ -255,7 +257,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.MediumBlue;
-            this.label4.Location = new System.Drawing.Point(9, 162);
+            this.label4.Location = new System.Drawing.Point(9, 168);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(26, 13);
             this.label4.TabIndex = 115;
@@ -264,7 +266,7 @@
             // txtBoxY22
             // 
             this.txtBoxY22.ForeColor = System.Drawing.Color.Black;
-            this.txtBoxY22.Location = new System.Drawing.Point(322, 159);
+            this.txtBoxY22.Location = new System.Drawing.Point(322, 165);
             this.txtBoxY22.Name = "txtBoxY22";
             this.txtBoxY22.Size = new System.Drawing.Size(38, 20);
             this.txtBoxY22.TabIndex = 114;
@@ -273,7 +275,7 @@
             // txtBoxY11
             // 
             this.txtBoxY11.ForeColor = System.Drawing.Color.Black;
-            this.txtBoxY11.Location = new System.Drawing.Point(254, 159);
+            this.txtBoxY11.Location = new System.Drawing.Point(254, 165);
             this.txtBoxY11.Name = "txtBoxY11";
             this.txtBoxY11.Size = new System.Drawing.Size(38, 20);
             this.txtBoxY11.TabIndex = 113;
@@ -282,7 +284,7 @@
             // txtBoxX22
             // 
             this.txtBoxX22.ForeColor = System.Drawing.Color.MediumBlue;
-            this.txtBoxX22.Location = new System.Drawing.Point(105, 159);
+            this.txtBoxX22.Location = new System.Drawing.Point(105, 165);
             this.txtBoxX22.Name = "txtBoxX22";
             this.txtBoxX22.Size = new System.Drawing.Size(38, 20);
             this.txtBoxX22.TabIndex = 112;
@@ -291,7 +293,7 @@
             // txtBoxX11
             // 
             this.txtBoxX11.ForeColor = System.Drawing.Color.MediumBlue;
-            this.txtBoxX11.Location = new System.Drawing.Point(37, 159);
+            this.txtBoxX11.Location = new System.Drawing.Point(37, 165);
             this.txtBoxX11.Name = "txtBoxX11";
             this.txtBoxX11.Size = new System.Drawing.Size(38, 20);
             this.txtBoxX11.TabIndex = 111;
@@ -310,9 +312,10 @@
             // labelToStrikout
             // 
             this.labelToStrikout.AutoSize = true;
+            this.labelToStrikout.BackColor = System.Drawing.Color.Transparent;
             this.labelToStrikout.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelToStrikout.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.labelToStrikout.Location = new System.Drawing.Point(9, 144);
+            this.labelToStrikout.Location = new System.Drawing.Point(9, 150);
             this.labelToStrikout.Name = "labelToStrikout";
             this.labelToStrikout.Size = new System.Drawing.Size(179, 13);
             this.labelToStrikout.TabIndex = 120;
@@ -331,12 +334,24 @@
             this.checkBox.UseVisualStyleBackColor = true;
             this.checkBox.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
             // 
+            // picArrowDown
+            // 
+            this.picArrowDown.BackColor = System.Drawing.Color.Transparent;
+            this.picArrowDown.Image = global::CropPDF.Properties.Resources.Arrows_down_animated;
+            this.picArrowDown.Location = new System.Drawing.Point(169, 117);
+            this.picArrowDown.Name = "picArrowDown";
+            this.picArrowDown.Size = new System.Drawing.Size(35, 31);
+            this.picArrowDown.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picArrowDown.TabIndex = 122;
+            this.picArrowDown.TabStop = false;
+            this.picArrowDown.Visible = false;
+            // 
             // FrmMain
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(373, 212);
+            this.ClientSize = new System.Drawing.Size(373, 219);
             this.Controls.Add(this.checkBox);
             this.Controls.Add(this.labelToStrikout);
             this.Controls.Add(this.labelChangeText);
@@ -364,6 +379,7 @@
             this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.txtGit);
             this.Controls.Add(this.txtBoxLoad);
+            this.Controls.Add(this.picArrowDown);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmMain";
@@ -372,6 +388,8 @@
             this.Text = "Crop Multiple PDF Files";
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.FrmMain_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.FrmMain_DragEnter);
+            this.DragLeave += new System.EventHandler(this.FrmMain_DragLeave);
+            ((System.ComponentModel.ISupportInitialize)(this.picArrowDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -406,6 +424,7 @@
         private System.Windows.Forms.Label labelChangeText;
         private System.Windows.Forms.Label labelToStrikout;
         private System.Windows.Forms.CheckBox checkBox;
+        private System.Windows.Forms.PictureBox picArrowDown;
     }
 }
 
