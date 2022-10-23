@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.txtBoxLoad = new System.Windows.Forms.TextBox();
-            this.txtGit = new System.Windows.Forms.Label();
             this.btnLoad = new System.Windows.Forms.Button();
             this.btnStartCroping = new System.Windows.Forms.Button();
             this.labelTotales = new System.Windows.Forms.Label();
@@ -57,40 +57,35 @@
             this.labelToStrikout = new System.Windows.Forms.Label();
             this.checkBox = new System.Windows.Forms.CheckBox();
             this.picArrowDown = new System.Windows.Forms.PictureBox();
+            this.GoToGithub = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.IMGDone = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.picArrowDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GoToGithub)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IMGDone)).BeginInit();
             this.SuspendLayout();
             // 
             // txtBoxLoad
             // 
             this.txtBoxLoad.BackColor = System.Drawing.SystemColors.Control;
+            this.txtBoxLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxLoad.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.txtBoxLoad.Location = new System.Drawing.Point(12, 24);
+            this.txtBoxLoad.Location = new System.Drawing.Point(12, 14);
             this.txtBoxLoad.Name = "txtBoxLoad";
+            this.txtBoxLoad.ReadOnly = true;
             this.txtBoxLoad.Size = new System.Drawing.Size(268, 20);
             this.txtBoxLoad.TabIndex = 100;
             this.txtBoxLoad.Text = "Chose your folder ...";
-            // 
-            // txtGit
-            // 
-            this.txtGit.AutoSize = true;
-            this.txtGit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.txtGit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGit.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.txtGit.Location = new System.Drawing.Point(164, 201);
-            this.txtGit.Name = "txtGit";
-            this.txtGit.Size = new System.Drawing.Size(38, 13);
-            this.txtGit.TabIndex = 1;
-            this.txtGit.Text = "Github";
-            this.txtGit.Click += new System.EventHandler(this.txtGit_Click);
             // 
             // btnLoad
             // 
             this.btnLoad.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLoad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLoad.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btnLoad.Location = new System.Drawing.Point(286, 24);
+            this.btnLoad.Location = new System.Drawing.Point(286, 14);
             this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(75, 23);
+            this.btnLoad.Size = new System.Drawing.Size(75, 20);
             this.btnLoad.TabIndex = 2;
             this.btnLoad.Text = "Load ...";
             this.btnLoad.UseVisualStyleBackColor = true;
@@ -98,22 +93,25 @@
             // 
             // btnStartCroping
             // 
+            this.btnStartCroping.BackColor = System.Drawing.SystemColors.Control;
             this.btnStartCroping.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnStartCroping.FlatAppearance.BorderSize = 2;
             this.btnStartCroping.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStartCroping.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btnStartCroping.Location = new System.Drawing.Point(12, 53);
+            this.btnStartCroping.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStartCroping.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnStartCroping.Location = new System.Drawing.Point(12, 40);
             this.btnStartCroping.Name = "btnStartCroping";
-            this.btnStartCroping.Size = new System.Drawing.Size(349, 23);
+            this.btnStartCroping.Size = new System.Drawing.Size(349, 36);
             this.btnStartCroping.TabIndex = 3;
             this.btnStartCroping.Text = "Start Croping";
-            this.btnStartCroping.UseVisualStyleBackColor = true;
+            this.btnStartCroping.UseVisualStyleBackColor = false;
             this.btnStartCroping.Click += new System.EventHandler(this.btnStartCroping_Click);
             // 
             // labelTotales
             // 
             this.labelTotales.AutoSize = true;
             this.labelTotales.ForeColor = System.Drawing.Color.DarkGreen;
-            this.labelTotales.Location = new System.Drawing.Point(136, 187);
+            this.labelTotales.Location = new System.Drawing.Point(136, 191);
             this.labelTotales.Name = "labelTotales";
             this.labelTotales.Size = new System.Drawing.Size(72, 13);
             this.labelTotales.TabIndex = 4;
@@ -123,7 +121,7 @@
             // 
             this.txtTotales.AutoSize = true;
             this.txtTotales.ForeColor = System.Drawing.Color.DarkGreen;
-            this.txtTotales.Location = new System.Drawing.Point(204, 187);
+            this.txtTotales.Location = new System.Drawing.Point(204, 191);
             this.txtTotales.Name = "txtTotales";
             this.txtTotales.Size = new System.Drawing.Size(16, 13);
             this.txtTotales.TabIndex = 5;
@@ -132,8 +130,9 @@
             // txtDone
             // 
             this.txtDone.AutoSize = true;
+            this.txtDone.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDone.ForeColor = System.Drawing.Color.DarkRed;
-            this.txtDone.Location = new System.Drawing.Point(327, 187);
+            this.txtDone.Location = new System.Drawing.Point(308, 190);
             this.txtDone.Name = "txtDone";
             this.txtDone.Size = new System.Drawing.Size(0, 13);
             this.txtDone.TabIndex = 6;
@@ -152,36 +151,44 @@
             this.txtBoxX1.ForeColor = System.Drawing.Color.MediumBlue;
             this.txtBoxX1.Location = new System.Drawing.Point(37, 121);
             this.txtBoxX1.Name = "txtBoxX1";
+            this.txtBoxX1.ShortcutsEnabled = false;
             this.txtBoxX1.Size = new System.Drawing.Size(38, 20);
             this.txtBoxX1.TabIndex = 102;
             this.txtBoxX1.Text = "590";
+            this.txtBoxX1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxX1_KeyPress);
             // 
             // txtBoxX2
             // 
             this.txtBoxX2.ForeColor = System.Drawing.Color.MediumBlue;
             this.txtBoxX2.Location = new System.Drawing.Point(105, 121);
             this.txtBoxX2.Name = "txtBoxX2";
+            this.txtBoxX2.ShortcutsEnabled = false;
             this.txtBoxX2.Size = new System.Drawing.Size(38, 20);
             this.txtBoxX2.TabIndex = 103;
             this.txtBoxX2.Text = "1587";
+            this.txtBoxX2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxX2_KeyPress);
             // 
             // txtBoxY1
             // 
             this.txtBoxY1.ForeColor = System.Drawing.Color.Black;
             this.txtBoxY1.Location = new System.Drawing.Point(254, 121);
             this.txtBoxY1.Name = "txtBoxY1";
+            this.txtBoxY1.ShortcutsEnabled = false;
             this.txtBoxY1.Size = new System.Drawing.Size(38, 20);
             this.txtBoxY1.TabIndex = 104;
             this.txtBoxY1.Text = "0";
+            this.txtBoxY1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxY1_KeyPress);
             // 
             // txtBoxY2
             // 
             this.txtBoxY2.ForeColor = System.Drawing.Color.Black;
             this.txtBoxY2.Location = new System.Drawing.Point(322, 121);
             this.txtBoxY2.Name = "txtBoxY2";
+            this.txtBoxY2.ShortcutsEnabled = false;
             this.txtBoxY2.Size = new System.Drawing.Size(38, 20);
             this.txtBoxY2.TabIndex = 105;
             this.txtBoxY2.Text = "1096";
+            this.txtBoxY2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxY2_KeyPress);
             // 
             // labelX1
             // 
@@ -268,36 +275,44 @@
             this.txtBoxY22.ForeColor = System.Drawing.Color.Black;
             this.txtBoxY22.Location = new System.Drawing.Point(322, 165);
             this.txtBoxY22.Name = "txtBoxY22";
+            this.txtBoxY22.ShortcutsEnabled = false;
             this.txtBoxY22.Size = new System.Drawing.Size(38, 20);
             this.txtBoxY22.TabIndex = 114;
             this.txtBoxY22.Text = "1096";
+            this.txtBoxY22.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxY22_KeyPress);
             // 
             // txtBoxY11
             // 
             this.txtBoxY11.ForeColor = System.Drawing.Color.Black;
             this.txtBoxY11.Location = new System.Drawing.Point(254, 165);
             this.txtBoxY11.Name = "txtBoxY11";
+            this.txtBoxY11.ShortcutsEnabled = false;
             this.txtBoxY11.Size = new System.Drawing.Size(38, 20);
             this.txtBoxY11.TabIndex = 113;
             this.txtBoxY11.Text = "0";
+            this.txtBoxY11.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxY11_KeyPress);
             // 
             // txtBoxX22
             // 
             this.txtBoxX22.ForeColor = System.Drawing.Color.MediumBlue;
             this.txtBoxX22.Location = new System.Drawing.Point(105, 165);
             this.txtBoxX22.Name = "txtBoxX22";
+            this.txtBoxX22.ShortcutsEnabled = false;
             this.txtBoxX22.Size = new System.Drawing.Size(38, 20);
             this.txtBoxX22.TabIndex = 112;
             this.txtBoxX22.Text = "595";
+            this.txtBoxX22.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxX22_KeyPress);
             // 
             // txtBoxX11
             // 
             this.txtBoxX11.ForeColor = System.Drawing.Color.MediumBlue;
             this.txtBoxX11.Location = new System.Drawing.Point(37, 165);
             this.txtBoxX11.Name = "txtBoxX11";
+            this.txtBoxX11.ShortcutsEnabled = false;
             this.txtBoxX11.Size = new System.Drawing.Size(38, 20);
             this.txtBoxX11.TabIndex = 111;
             this.txtBoxX11.Text = "0";
+            this.txtBoxX11.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxX11_KeyPress);
             // 
             // labelChangeText
             // 
@@ -346,12 +361,40 @@
             this.picArrowDown.TabStop = false;
             this.picArrowDown.Visible = false;
             // 
+            // GoToGithub
+            // 
+            this.GoToGithub.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.GoToGithub.Image = ((System.Drawing.Image)(resources.GetObject("GoToGithub.Image")));
+            this.GoToGithub.Location = new System.Drawing.Point(12, 187);
+            this.GoToGithub.Name = "GoToGithub";
+            this.GoToGithub.Size = new System.Drawing.Size(17, 16);
+            this.GoToGithub.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.GoToGithub.TabIndex = 123;
+            this.GoToGithub.TabStop = false;
+            this.toolTip1.SetToolTip(this.GoToGithub, "Go to Github.");
+            this.GoToGithub.Click += new System.EventHandler(this.GoToGithub_Click);
+            // 
+            // IMGDone
+            // 
+            this.IMGDone.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.IMGDone.Image = ((System.Drawing.Image)(resources.GetObject("IMGDone.Image")));
+            this.IMGDone.Location = new System.Drawing.Point(344, 188);
+            this.IMGDone.Name = "IMGDone";
+            this.IMGDone.Size = new System.Drawing.Size(17, 16);
+            this.IMGDone.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.IMGDone.TabIndex = 124;
+            this.IMGDone.TabStop = false;
+            this.toolTip1.SetToolTip(this.IMGDone, "Go to Github.");
+            this.IMGDone.Visible = false;
+            // 
             // FrmMain
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(373, 219);
+            this.ClientSize = new System.Drawing.Size(373, 209);
+            this.Controls.Add(this.IMGDone);
+            this.Controls.Add(this.GoToGithub);
             this.Controls.Add(this.checkBox);
             this.Controls.Add(this.labelToStrikout);
             this.Controls.Add(this.labelChangeText);
@@ -377,19 +420,20 @@
             this.Controls.Add(this.labelTotales);
             this.Controls.Add(this.btnStartCroping);
             this.Controls.Add(this.btnLoad);
-            this.Controls.Add(this.txtGit);
             this.Controls.Add(this.txtBoxLoad);
             this.Controls.Add(this.picArrowDown);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "FrmMain";
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Crop Multiple PDF Files";
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.FrmMain_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.FrmMain_DragEnter);
             this.DragLeave += new System.EventHandler(this.FrmMain_DragLeave);
             ((System.ComponentModel.ISupportInitialize)(this.picArrowDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GoToGithub)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IMGDone)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -398,7 +442,6 @@
         #endregion
 
         private System.Windows.Forms.TextBox txtBoxLoad;
-        private System.Windows.Forms.Label txtGit;
         private System.Windows.Forms.Button btnLoad;
         private System.Windows.Forms.Button btnStartCroping;
         private System.Windows.Forms.Label labelTotales;
@@ -425,6 +468,9 @@
         private System.Windows.Forms.Label labelToStrikout;
         private System.Windows.Forms.CheckBox checkBox;
         private System.Windows.Forms.PictureBox picArrowDown;
+        private System.Windows.Forms.PictureBox GoToGithub;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.PictureBox IMGDone;
     }
 }
 
