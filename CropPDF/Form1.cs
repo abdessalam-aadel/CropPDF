@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.Windows.Forms;
 using System.Drawing;
 using pdftron;
-using pdftron.Common;
 using pdftron.SDF;
 using pdftron.PDF;
 
@@ -40,15 +39,21 @@ namespace CropPDF
                 txtBoxLoad.Text = FD.SelectedPath;
                 fileCount = SearchDirectoryTree(FD.SelectedPath, out PDFfiles);
                 // Check the Empty Folder
-                if (fileCount == 0)
-                    txtTotales.Text = "Your Folder is Empty";
-                else
-                    txtTotales.Text = fileCount + " files.";
+                txtTotales.Text = fileCount == 0 ? "Your Folder is Empty" : fileCount + " files.";
+                // Clear the Alert message and success message
+                txtDone.Text = "";
+                txtAlert.Text = "";
+                IMGDone.Visible = false;
             }
         }
 
         private void btnStartCroping_Click(object sender, EventArgs e)
         {
+            // Clear the Alert message and success message
+            txtDone.Text = "";
+            txtAlert.Text = "";
+            IMGDone.Visible = false;
+
             // Check if the user has been selected a folder
             if (PDFfiles == null)
             {
@@ -58,12 +63,10 @@ namespace CropPDF
 
             // Check the Empty Folder
             if (fileCount == 0)
+            {
+                txtAlert.Text = "Your Folder is Empty";
                 return;
-            
-            // Clear the Alert message and success message
-            txtDone.Text = "";
-            txtAlert.Text = "";
-            IMGDone.Visible = false;
+            }
 
             Cursor = Cursors.WaitCursor;
 
@@ -159,6 +162,9 @@ namespace CropPDF
                 MessageBox.Show(ex.Message,"Error Message",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 PDFNet.Terminate();
                 Cursor = Cursors.Default;
+                PDFfiles = null;
+                txtBoxLoad.Text = "Chose your folder ...";
+                txtTotales.Text = "...";
                 return;
             }
 
@@ -166,19 +172,24 @@ namespace CropPDF
             Cursor = Cursors.Default;
             txtDone.Text = "Done";
             IMGDone.Visible = true;
+            PDFfiles = null;
+            txtBoxLoad.Text = "Chose your folder ...";
+            txtTotales.Text = "...";
         }
 
         private void FrmMain_DragDrop(object sender, DragEventArgs e)
         {
             picArrowDown.Visible = false;
             string path = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
-            txtBoxLoad.Text = path;
-            fileCount = SearchDirectoryTree(path, out PDFfiles);
-            // Check the Empty Folder
-            if (fileCount == 0)
-                txtTotales.Text = "Your Folder is Empty";
+            if (Directory.Exists(path))
+            {
+                txtBoxLoad.Text = path;
+                fileCount = SearchDirectoryTree(path, out PDFfiles);
+                // Check the Empty Folder
+                txtTotales.Text = fileCount == 0 ? "Your Folder is Empty" : fileCount + " files.";
+            }
             else
-                txtTotales.Text = fileCount + " files.";
+                PDFfiles = null;
         }
 
         private void FrmMain_DragEnter(object sender, DragEventArgs e)
@@ -206,7 +217,6 @@ namespace CropPDF
                 txtBoxY22.Enabled = false;
 
                 txtBoxX1.Text = "800";
-
             }
             else
             {
