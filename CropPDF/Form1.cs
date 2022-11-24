@@ -81,7 +81,6 @@ namespace CropPDF
                 {
                     using (PDFDoc doc = new PDFDoc(filePath))
                     {
-                        // get the length of pages
                         int nbrPages = doc.GetPageCount();
 
                         if (ischecked)
@@ -95,7 +94,7 @@ namespace CropPDF
                             int X2 = System.Convert.ToInt32(txtBoxX2.Text);
                             int Y1 = System.Convert.ToInt32(txtBoxY1.Text);
                             int Y2 = System.Convert.ToInt32(txtBoxY2.Text);
-                            
+
                             // Start for loop to crop all pages with the same parametre
                             for (int i = 1; i < nbrPages + 1; i++)
                             {
@@ -162,6 +161,7 @@ namespace CropPDF
                 MessageBox.Show(ex.Message,"Error Message",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 PDFNet.Terminate();
                 Cursor = Cursors.Default;
+                IMGDone.Visible = false;
                 PDFfiles = null;
                 txtBoxLoad.Text = "Chose your folder ...";
                 txtTotales.Text = "...";
@@ -180,13 +180,28 @@ namespace CropPDF
         private void FrmMain_DragDrop(object sender, DragEventArgs e)
         {
             picArrowDown.Visible = false;
+            IMGDone.Visible = false;
             string path = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
+
+            // Get Extension of dragged file 
+            string ext = Path.GetExtension(path);
+
+            // Condition >> Drag Folder
             if (Directory.Exists(path))
             {
                 txtBoxLoad.Text = path;
                 fileCount = SearchDirectoryTree(path, out PDFfiles);
                 // Check the Empty Folder
                 txtTotales.Text = fileCount == 0 ? "Your Folder is Empty" : fileCount + " files.";
+            }
+
+            // Condition >> Drage one PDF file
+            else if (ext == ".pdf")
+            {
+                PDFfiles = new string[] { path };
+                fileCount = 1;
+                txtTotales.Text = fileCount + " files.";
+                txtBoxLoad.Text = path;
             }
             else
                 PDFfiles = null;
@@ -195,6 +210,7 @@ namespace CropPDF
         private void FrmMain_DragEnter(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.Copy;
+            IMGDone.Visible = false;
             picArrowDown.Visible = true;
             txtBoxLoad.Text = "Chose your folder ...";
             txtDone.Text = "";
