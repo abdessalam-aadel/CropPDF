@@ -141,7 +141,7 @@
             // 
             this.txtAlert.AutoSize = true;
             this.txtAlert.ForeColor = System.Drawing.Color.DarkRed;
-            this.txtAlert.Location = new System.Drawing.Point(93, 6);
+            this.txtAlert.Location = new System.Drawing.Point(35, 9);
             this.txtAlert.Name = "txtAlert";
             this.txtAlert.Size = new System.Drawing.Size(0, 13);
             this.txtAlert.TabIndex = 101;

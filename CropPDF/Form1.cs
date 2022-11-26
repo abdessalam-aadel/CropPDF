@@ -57,7 +57,7 @@ namespace CropPDF
             // Check if the user has been selected a folder
             if (PDFfiles == null)
             {
-                txtAlert.Text = "Please select your folder and try again!";
+                txtAlert.Text = "Please select your folder or drag your PDF file and try again!";
                 return;
             }
 
@@ -86,7 +86,7 @@ namespace CropPDF
                         if (ischecked)
                         {
                             doc.InitSecurityHandler();
-                            
+
                             // Start Convertion ...
                             // Convert String to Integer 
                             // ( add System to Class Convert to avoid a conflit between Convert of PDFTron )
@@ -155,13 +155,21 @@ namespace CropPDF
                 }
             }
 
+            catch (pdftron.Common.PDFNetException)
+            {
+                // Message Exception
+                MessageBox.Show("Please close the file and try agin", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                PDFNet.Terminate();
+                Cursor = Cursors.Default;
+                return;
+            }
+
             catch (Exception ex)
             {
                 // Message Exception
-                MessageBox.Show(ex.Message,"Error Message",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 PDFNet.Terminate();
                 Cursor = Cursors.Default;
-                IMGDone.Visible = false;
                 PDFfiles = null;
                 txtBoxLoad.Text = "Chose your folder ...";
                 txtTotales.Text = "...";
@@ -198,10 +206,10 @@ namespace CropPDF
             // Condition >> Drage one PDF file
             else if (ext == ".pdf")
             {
+                txtBoxLoad.Text = path;
                 PDFfiles = new string[] { path };
                 fileCount = 1;
                 txtTotales.Text = fileCount + " files.";
-                txtBoxLoad.Text = path;
             }
             else
                 PDFfiles = null;
@@ -216,6 +224,7 @@ namespace CropPDF
             txtDone.Text = "";
             txtTotales.Text = "...";
             txtAlert.Text = "";
+            PDFfiles = null;
         }
 
         private void checkBox_CheckedChanged(object sender, EventArgs e)
@@ -252,7 +261,6 @@ namespace CropPDF
                 txtBoxY1.Text = "0";
                 txtBoxY2.Text = "1096";
             }
-            
         }
 
         private void FrmMain_DragLeave(object sender, EventArgs e) => picArrowDown.Visible = false;
